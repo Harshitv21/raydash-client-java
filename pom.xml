@@ -4,10 +4,94 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.raydash</groupId>
+    <groupId>app.raydash</groupId>
     <artifactId>raydash-client-java</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+
+    <name>Raydash Java Client</name>
+    <description>Java client for the self deployable mini cache, Raydash (find more at: https://raydash.app).</description>
+    <url>https://raydash.app</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>Harshitv21</id>
+            <name>Harshit Verma</name>
+            <email>Harshit2003v@gmail.com</email>
+            <roles>
+                <role>developer</role>
+                <role>maintainer</role>
+            </roles>
+            <timezone>Asia/Kolkata</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/Harshitv21/raydash-client-java.git</connection>
+        <developerConnection>scm:git:git@github.com:Harshitv21/raydash-client-java.git</developerConnection>
+        <url>https://github.com/Harshitv21/raydash-client-java/</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.3.1</version>
+            <executions>
+                <execution><id>attach-sources</id><goals><goal>jar</goal></goals></execution>
+            </executions>
+            </plugin>
+
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.6.3</version>
+            <executions>
+                <execution><id>attach-javadocs</id><goals><goal>jar</goal></goals></execution>
+            </executions>
+            </plugin>
+
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.2.7</version>
+            <executions>
+                <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals><goal>sign</goal></goals>
+                <configuration>
+                    <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                    </gpgArguments>
+                </configuration>
+                </execution>
+            </executions>
+            </plugin>
+
+            <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.8.0</version>
+            <extensions>true</extensions>
+            <configuration>
+                <publishingServerId>central</publishingServerId>
+                <autoPublish>false</autoPublish>
+            </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
